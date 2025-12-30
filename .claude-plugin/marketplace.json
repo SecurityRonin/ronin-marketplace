@@ -25,10 +25,10 @@
       "source": "./plugins/docs-skills"
     },
     {
-      "name": "browser-skills",
+      "name": "automation-skills",
       "description": "Browser automation with Playwright, Puppeteer, and CDP",
       "version": "1.0.0",
-      "source": "./plugins/browser-skills"
+      "source": "./plugins/automation-skills"
     }
   ]
 }

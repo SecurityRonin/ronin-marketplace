@@ -18,7 +18,7 @@ Then install the plugins you need:
 /plugin install deployment-skills@ronin-marketplace
 /plugin install packaging-skills@ronin-marketplace
 /plugin install docs-skills@ronin-marketplace
-/plugin install browser-skills@ronin-marketplace
+/plugin install automation-skills@ronin-marketplace
 ```
 
 Or install all at once:
@@ -100,12 +100,12 @@ Documentation pipelines: MkDocs, Pandoc, GitHub Pages.
 | **mkdocs-github-pages-deployment** | Deploying MkDocs to GitHub Pages. Python-Markdown gotchas: 4-space indentation, footnotes, grid tables. |
 | **pandoc-pdf-generation** | Generating PDFs from Markdown. Blank line rules, fix scripts, visual testing workflow. |
 
-### browser-skills
+### automation-skills
 
 Browser automation with Playwright, Puppeteer, and CDP.
 
 ```
-/plugin install browser-skills@ronin-marketplace
+/plugin install automation-skills@ronin-marketplace
 ```
 
 | Skill | Use When |

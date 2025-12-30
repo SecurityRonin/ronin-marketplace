@@ -1,0 +1,23 @@
+{
+  "name": "ronin-marketplace",
+  "owner": {
+    "name": "Albert Hui",
+    "email": "albert@securityronin.com"
+  },
+  "metadata": {
+    "description": "Practical deployment and packaging skills: cross-platform installers, documentation pipelines, and cloud deployment patterns",
+    "version": "0.0.1"
+  },
+  "plugins": [
+    {
+      "name": "deployment-skills",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/SecurityRonin/ronin-marketplace.git"
+      },
+      "description": "Cross-platform packaging, documentation deployment, and cloud infrastructure skills",
+      "version": "0.0.1",
+      "strict": true
+    }
+  ]
+}

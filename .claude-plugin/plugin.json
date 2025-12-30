@@ -1,0 +1,13 @@
+{
+  "name": "deployment-skills",
+  "description": "Battle-tested skills for shipping software: cross-platform packaging, documentation pipelines, and cloud deployment patterns",
+  "version": "0.0.1",
+  "author": {
+    "name": "Albert Hui",
+    "email": "albert@securityronin.com"
+  },
+  "homepage": "https://github.com/SecurityRonin/ronin-marketplace",
+  "repository": "https://github.com/SecurityRonin/ronin-marketplace",
+  "license": "MIT",
+  "keywords": ["deployment", "packaging", "dmg", "msi", "deb", "mkdocs", "pandoc", "fly.io", "cloudflare", "devops"]
+}

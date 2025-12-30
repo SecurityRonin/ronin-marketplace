@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Node (if testing locally)
+node_modules/

@@ -68,6 +68,53 @@ npm install selenium-webdriver
 
 ---
 
+### AI-Powered Automation
+
+**Stagehand**
+```bash
+npm install @anthropic-ai/stagehand
+```
+
+AI agent that automates web tasks using Claude + CDP.
+
+**Use when:**
+- Complex multi-step web workflows
+- Dynamic/changing UIs
+- Natural language task descriptions
+- Have budget for LLM API calls
+
+**Not suitable for:**
+- Chrome extension testing
+- Simple, predictable automation
+- Cost-sensitive projects
+
+---
+
+**Browser-Use**
+```bash
+pip install browser-use
+```
+
+Python library for LLM-controlled browser automation.
+
+**Use when:**
+- Python-based projects
+- Need AI to navigate/interact with sites
+- Exploratory automation
+
+---
+
+**Skyvern**
+
+Vision-based web automation using computer vision + LLMs.
+
+**Use when:**
+- Sites with no accessible DOM selectors
+- Need to handle CAPTCHAs/complex visuals
+- Budget for vision API calls
+
+---
+
 ## Chrome Extension Testing
 
 ### Local Testing (Recommended)
@@ -139,6 +186,25 @@ const { targetInfos } = await client.send('Target.getTargets')
 
 const extensions = targetInfos.filter(t => t.type === 'service_worker')
 const pages = targetInfos.filter(t => t.type === 'page')
+const workers = targetInfos.filter(t => t.type === 'worker')
+```
+
+### Execute Code in Extension Context
+
+```typescript
+// Attach to extension service worker
+const swTarget = await client.send('Target.attachToTarget', {
+  targetId: extensionTarget.targetId,
+  flatten: true,
+})
+
+// Execute in service worker context
+await client.send('Runtime.evaluate', {
+  expression: `
+    chrome.storage.local.get(['key']).then(console.log)
+  `,
+  awaitPromise: true,
+})
 ```
 
 ### Intercept Network Requests
@@ -235,6 +301,139 @@ await page.evaluate(() => {
   })
 })
 ```
+
+---
+
+## Advanced Lazy Loading Techniques
+
+### Googlebot-Style Tall Viewport
+
+**Key insight:** Googlebot doesn't scroll - it uses a 12,140px viewport and manipulates IntersectionObserver.
+
+```javascript
+// Temporarily expand document for IntersectionObserver
+async function triggerLazyLoadViaViewport() {
+  const originalHeight = document.documentElement.style.height;
+  const originalOverflow = document.documentElement.style.overflow;
+
+  // Googlebot uses 12,140px mobile / 9,307px desktop
+  document.documentElement.style.height = '20000px';
+  document.documentElement.style.overflow = 'visible';
+
+  // Wait for observers to trigger
+  await new Promise(r => setTimeout(r, 500));
+
+  // Restore
+  document.documentElement.style.height = originalHeight;
+  document.documentElement.style.overflow = originalOverflow;
+}
+```
+
+**Pros:** No visible scrolling, works with standard IntersectionObserver
+**Cons:** Won't work with scroll-event listeners or virtualized lists
+
+---
+
+### IntersectionObserver Override
+
+Patch IntersectionObserver before page loads to force everything to "intersect":
+
+```javascript
+// Must inject at document_start (before page JS runs)
+const script = document.createElement('script');
+script.textContent = `
+  const OriginalIO = window.IntersectionObserver;
+  window.IntersectionObserver = function(callback, options) {
+    // Override rootMargin to include everything off-screen
+    const modifiedOptions = {
+      ...options,
+      rootMargin: '10000px 10000px 10000px 10000px'
+    };
+    return new OriginalIO(callback, modifiedOptions);
+  };
+  window.IntersectionObserver.prototype = OriginalIO.prototype;
+`;
+document.documentElement.prepend(script);
+```
+
+**Pros:** Elegant, works at the source, no DOM manipulation
+**Cons:** Must inject before page JS runs, may break other functionality
+
+---
+
+### Direct Attribute Manipulation
+
+Force lazy elements to load by modifying their attributes:
+
+```javascript
+function forceLoadLazyContent() {
+  // Handle data-src → src pattern
+  document.querySelectorAll('[data-src]').forEach(el => {
+    if (!el.src) el.src = el.dataset.src;
+  });
+
+  document.querySelectorAll('[data-srcset]').forEach(el => {
+    if (!el.srcset) el.srcset = el.dataset.srcset;
+  });
+
+  // Handle background images
+  document.querySelectorAll('[data-background]').forEach(el => {
+    el.style.backgroundImage = `url(${el.dataset.background})`;
+  });
+
+  // Trigger lazysizes library if present
+  if (window.lazySizes) {
+    document.querySelectorAll('.lazyload').forEach(el => {
+      window.lazySizes.loader.unveil(el);
+    });
+  }
+}
+```
+
+---
+
+### MutationObserver for Progressive Extraction
+
+Watch for DOM changes and extract content as it loads:
+
+```javascript
+function setupProgressiveExtraction(onNewContent) {
+  let debounceTimer = null;
+
+  const observer = new MutationObserver((mutations) => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      const addedNodes = mutations
+        .flatMap(m => Array.from(m.addedNodes))
+        .filter(n => n.nodeType === Node.ELEMENT_NODE);
+
+      if (addedNodes.length > 0) {
+        onNewContent(addedNodes);
+      }
+    }, 300);
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+
+  return () => observer.disconnect();
+}
+```
+
+---
+
+### Lazy Loading Decision Matrix
+
+| Approach | Scrolling? | Reliability | Complexity |
+|----------|------------|-------------|------------|
+| Tall Viewport | No | Medium | Low |
+| IO Override | No | Medium | Medium |
+| Attribute Manipulation | No | Low | Low |
+| MutationObserver | User-initiated | High | Low |
+
+**Recommendation:** Start with **IO Override + Tall Viewport** for most cases. Use **MutationObserver** when user scrolling is acceptable.
 
 ---
 

@@ -6,25 +6,15 @@
 
 ## Installation
 
-### Claude Code (Recommended)
-
-Register the marketplace, then install:
+### Claude Code
 
 ```
-/plugin marketplace add SecurityRonin/ronin-marketplace
-/plugin install deployment-skills@ronin-marketplace
+/install-plugin https://github.com/SecurityRonin/ronin-marketplace
 ```
 
 Verify installation:
 ```
-/help
-```
-
-### Claude Code (Direct)
-
-Install directly without registering:
-```
-/install-plugin https://github.com/SecurityRonin/ronin-marketplace
+/skills
 ```
 
 ### Claude Desktop
@@ -50,7 +40,7 @@ Restart Claude Desktop after adding.
 ### Updates
 
 ```
-/plugin update deployment-skills
+/plugin update ronin-marketplace
 ```
 
 ## Skills

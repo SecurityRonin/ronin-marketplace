@@ -1,7 +1,7 @@
 {
-  "name": "deployment-skills",
-  "description": "Battle-tested skills for shipping software: cross-platform packaging, documentation pipelines, and cloud deployment patterns",
-  "version": "0.0.1",
+  "name": "ronin-marketplace",
+  "description": "Battle-tested skills for Claude Code: deployment patterns, browser automation, and hard-won knowledge from real projects",
+  "version": "1.0.0",
   "author": {
     "name": "Albert Hui",
     "email": "albert@securityronin.com"
@@ -9,5 +9,5 @@
   "homepage": "https://github.com/SecurityRonin/ronin-marketplace",
   "repository": "https://github.com/SecurityRonin/ronin-marketplace",
   "license": "MIT",
-  "keywords": ["deployment", "packaging", "dmg", "msi", "deb", "mkdocs", "pandoc", "fly.io", "cloudflare", "devops"]
+  "keywords": ["skills", "deployment", "vercel", "fly-io", "cloudflare", "browser-automation", "playwright"]
 }

@@ -2,7 +2,7 @@
 
 **Battle-tested skills for shipping software.** Hard-won knowledge from real deployments, packaged for Claude Code.
 
-[![Sponsor](https://img.shields.io/badge/Sponsor-SecurityRonin-ea4aaa?logo=github-sponsors)](https://github.com/sponsors/SecurityRonin)
+[![Sponsor](https://img.shields.io/badge/Sponsor-Albert_Hui-ea4aaa?logo=github-sponsors)](https://github.com/sponsors/h4x0r)
 
 ## Installation
 
@@ -101,7 +101,7 @@ Found a gotcha we missed? PRs welcome. Follow the pattern in existing skills.
 
 ## Sponsorship
 
-If these skills save you time, consider [sponsoring](https://github.com/sponsors/SecurityRonin) continued development.
+If these skills save you time, consider [sponsoring](https://github.com/sponsors/h4x0r) continued development.
 
 ## License
 

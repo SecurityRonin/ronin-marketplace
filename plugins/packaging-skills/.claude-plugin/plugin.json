@@ -1,0 +1,11 @@
+{
+  "name": "packaging-skills",
+  "description": "Cross-platform installers for macOS (DMG), Windows (MSI/WiX), Linux (DEB). Bundling dependencies, GitHub Actions, SLSA attestations.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Albert Hui",
+    "email": "albert@securityronin.com"
+  },
+  "license": "MIT",
+  "keywords": ["packaging", "dmg", "msi", "deb", "installers", "cross-platform"]
+}

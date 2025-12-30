@@ -1,0 +1,11 @@
+{
+  "name": "browser-skills",
+  "description": "Browser automation with Playwright/Puppeteer. Chrome extension testing, CDP techniques, lazy loading patterns, AI-powered tools.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Albert Hui",
+    "email": "albert@securityronin.com"
+  },
+  "license": "MIT",
+  "keywords": ["browser-automation", "playwright", "puppeteer", "testing", "cdp"]
+}

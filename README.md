@@ -8,8 +8,22 @@
 
 ### Claude Code
 
+First, add the marketplace:
 ```
-/install-plugin https://github.com/SecurityRonin/ronin-marketplace
+/plugin marketplace add SecurityRonin/ronin-marketplace
+```
+
+Then install the plugins you need:
+```
+/plugin install deployment-skills@ronin-marketplace
+/plugin install packaging-skills@ronin-marketplace
+/plugin install docs-skills@ronin-marketplace
+/plugin install browser-skills@ronin-marketplace
+```
+
+Or install all at once:
+```
+/plugin install deployment-skills@ronin-marketplace packaging-skills@ronin-marketplace docs-skills@ronin-marketplace browser-skills@ronin-marketplace
 ```
 
 Verify installation:
@@ -40,32 +54,18 @@ Restart Claude Desktop after adding.
 ### Updates
 
 ```
-/plugin update ronin-marketplace
+/plugin update deployment-skills@ronin-marketplace
 ```
 
-## Skills
+## Plugins
 
-### Cross-Platform Packaging
+### deployment-skills
 
-| Skill | Use When |
-|-------|----------|
-| **build-cross-platform-packages** | Building installers for macOS (DMG), Windows (MSI/WiX), Linux (DEB). GitHub Actions automation, SLSA attestations, Homebrew updates. |
-| **robust-dependency-installation** | Bundling portable executables (FFmpeg, Tesseract, ExifTool) in MSI installers. Unified detection/execution code paths. |
+Cloud deployment patterns for Vercel, Fly.io, and Cloudflare.
 
-### Documentation & PDF
-
-| Skill | Use When |
-|-------|----------|
-| **mkdocs-github-pages-deployment** | Deploying MkDocs to GitHub Pages. Python-Markdown gotchas: 4-space indentation, footnotes, grid tables. |
-| **pandoc-pdf-generation** | Generating PDFs from Markdown. Blank line rules, fix scripts, visual testing workflow. |
-
-### Browser Automation
-
-| Skill | Use When |
-|-------|----------|
-| **browser-automation** | Automating browsers with Playwright/Puppeteer, testing Chrome extensions, handling dynamic content, CDP techniques. |
-
-### Cloud Deployment
+```
+/plugin install deployment-skills@ronin-marketplace
+```
 
 | Skill | Use When |
 |-------|----------|
@@ -73,6 +73,44 @@ Restart Claude Desktop after adding.
 | **vercel-deployment** | Deploying to Vercel. vercel.json config, env var gotchas (printf!), monorepo setup, Next.js errors, GCP WIF. |
 | **fly-deployment** | Deploying to Fly.io. Single volume limit, monorepo patterns, Next.js provider errors. |
 | **cloudflare-r2-d1** | Using Cloudflare D1/R2/KV. Critical limits (10GB DB, 1 write/sec/key), multi-tenant patterns. |
+
+### packaging-skills
+
+Cross-platform installers: DMG, MSI, DEB with GitHub Actions.
+
+```
+/plugin install packaging-skills@ronin-marketplace
+```
+
+| Skill | Use When |
+|-------|----------|
+| **build-cross-platform-packages** | Building installers for macOS (DMG), Windows (MSI/WiX), Linux (DEB). GitHub Actions automation, SLSA attestations, Homebrew updates. |
+| **robust-dependency-installation** | Bundling portable executables (FFmpeg, Tesseract, ExifTool) in MSI installers. Unified detection/execution code paths. |
+
+### docs-skills
+
+Documentation pipelines: MkDocs, Pandoc, GitHub Pages.
+
+```
+/plugin install docs-skills@ronin-marketplace
+```
+
+| Skill | Use When |
+|-------|----------|
+| **mkdocs-github-pages-deployment** | Deploying MkDocs to GitHub Pages. Python-Markdown gotchas: 4-space indentation, footnotes, grid tables. |
+| **pandoc-pdf-generation** | Generating PDFs from Markdown. Blank line rules, fix scripts, visual testing workflow. |
+
+### browser-skills
+
+Browser automation with Playwright, Puppeteer, and CDP.
+
+```
+/plugin install browser-skills@ronin-marketplace
+```
+
+| Skill | Use When |
+|-------|----------|
+| **browser-automation** | Automating browsers with Playwright/Puppeteer, testing Chrome extensions, handling dynamic content, CDP techniques, AI-powered tools. |
 
 ## Philosophy
 

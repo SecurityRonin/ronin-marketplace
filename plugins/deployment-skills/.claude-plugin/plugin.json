@@ -1,0 +1,11 @@
+{
+  "name": "deployment-skills",
+  "description": "Cloud deployment patterns for Vercel, Fly.io, and Cloudflare. Routing, env var gotchas, volume limits, and platform-specific fixes.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Albert Hui",
+    "email": "albert@securityronin.com"
+  },
+  "license": "MIT",
+  "keywords": ["deployment", "vercel", "fly-io", "cloudflare", "devops"]
+}

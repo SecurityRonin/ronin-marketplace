@@ -1,0 +1,11 @@
+{
+  "name": "docs-skills",
+  "description": "Documentation pipelines: MkDocs to GitHub Pages, Pandoc PDF generation. Python-Markdown gotchas, blank line rules, visual testing.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Albert Hui",
+    "email": "albert@securityronin.com"
+  },
+  "license": "MIT",
+  "keywords": ["documentation", "mkdocs", "pandoc", "pdf", "github-pages"]
+}

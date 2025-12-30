@@ -81,6 +81,7 @@ Restart Claude Desktop after adding.
 |-------|----------|
 | **cloudflare-r2-d1** | Using Cloudflare D1/R2/KV. Critical limits (10GB DB, 1 write/sec/key), multi-tenant patterns. |
 | **fly-deployment** | Deploying to Fly.io. Single volume limit, monorepo patterns, Next.js provider errors. |
+| **vercel-deployment** | Deploying to Vercel. vercel.json config, env var gotchas (printf!), monorepo setup, Next.js errors, preview deployments. |
 
 ## Philosophy
 

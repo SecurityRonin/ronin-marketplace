@@ -4,6 +4,14 @@
 
 [![Sponsor](https://img.shields.io/badge/Sponsor-Albert_Hui-ea4aaa?logo=github-sponsors)](https://github.com/sponsors/h4x0r)
 
+```
+ronin-marketplace
+├── deployment-skills (4 skills)
+├── packaging-skills (2 skills)
+├── docs-skills (2 skills)
+└── automation-skills (1 skill)
+```
+
 ## Installation
 
 ### Claude Code

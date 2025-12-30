@@ -522,6 +522,89 @@ If builds are stale or broken:
 
 ---
 
+## OAuth Integration
+
+### Callback URL Must Match Final Domain
+
+If your domain redirects (e.g., `example.com` → `www.example.com`), the OAuth callback URL must use the **final destination domain**:
+
+```
+https://www.example.com/api/auth/callback  ✓
+https://example.com/api/auth/callback      ✗ (if it redirects to www)
+```
+
+### Debugging OAuth Issues
+
+```bash
+# Check redirect URL for corruption
+curl -s -I "https://your-app.com/api/auth/github" | grep location
+```
+
+Look for `%0A` (newline) or unexpected characters in `client_id` - indicates env var has trailing newline.
+
+**Common errors:**
+- `client_id and/or client_secret passed are incorrect` → Check for newlines in env vars
+- `404 on callback` → Callback URL mismatch in OAuth app settings
+
+---
+
+## GCP Workload Identity Federation (WIF)
+
+### Audience Mismatch
+
+Vercel OIDC tokens have `aud: "https://vercel.com/{team-slug}"` but GCP providers often default to expecting `https://oidc.vercel.com/{team-slug}`.
+
+**Diagnosis:**
+```bash
+gcloud iam workload-identity-pools providers describe {provider} \
+  --location=global \
+  --workload-identity-pool={pool} \
+  --project={project} \
+  --format="value(oidc.allowedAudiences)"
+```
+
+**Fix:** Update allowed audience to match Vercel's token:
+```bash
+gcloud iam workload-identity-pools providers update-oidc {provider} \
+  --location=global \
+  --workload-identity-pool={pool} \
+  --project={project} \
+  --allowed-audiences="https://vercel.com/{team-slug}"
+```
+
+### OIDC Package
+
+Use `@vercel/functions/oidc`, NOT the deprecated `@vercel/oidc`:
+
+```typescript
+// ❌ Old (deprecated, causes "getToken is not a function")
+import { getToken } from '@vercel/oidc'
+
+// ✅ New
+import { getVercelOidcToken } from '@vercel/functions/oidc'
+```
+
+### Newlines Break WIF
+
+If env vars have trailing newlines, the STS audience string becomes corrupted:
+```
+"//iam.googleapis.com/projects/123456\n/locations/global..."
+```
+
+**Symptoms:**
+- Debug endpoint shows `\n` in the `stsAudience` field
+- STS exchange fails with "Invalid value for audience"
+
+**Fix:** Re-add each WIF env var using `printf` (not dashboard copy-paste):
+```bash
+printf "value" | vercel env add GCP_PROJECT_NUMBER production --force
+printf "value" | vercel env add GCP_WORKLOAD_IDENTITY_POOL_ID production --force
+printf "value" | vercel env add GCP_WORKLOAD_IDENTITY_PROVIDER_ID production --force
+printf "value" | vercel env add GCP_SERVICE_ACCOUNT_EMAIL production --force
+```
+
+---
+
 ## Domains
 
 ### Add Custom Domain

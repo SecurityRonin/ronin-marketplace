@@ -9,7 +9,9 @@ ronin-marketplace
 ├── deployment-skills (4 skills)
 ├── packaging-skills (2 skills)
 ├── docs-skills (2 skills)
-└── automation-skills (1 skill)
+├── automation-skills (1 skill)
+├── development-skills (1 skill)
+└── ui-skills (3 skills)
 ```
 
 ## Installation
@@ -27,11 +29,13 @@ Then install the plugins you need:
 /plugin install packaging-skills@ronin-marketplace
 /plugin install docs-skills@ronin-marketplace
 /plugin install automation-skills@ronin-marketplace
+/plugin install development-skills@ronin-marketplace
+/plugin install ui-skills@ronin-marketplace
 ```
 
 Or install all at once:
 ```
-/plugin install deployment-skills@ronin-marketplace packaging-skills@ronin-marketplace docs-skills@ronin-marketplace browser-skills@ronin-marketplace
+/plugin install deployment-skills@ronin-marketplace packaging-skills@ronin-marketplace docs-skills@ronin-marketplace automation-skills@ronin-marketplace development-skills@ronin-marketplace ui-skills@ronin-marketplace
 ```
 
 Verify installation:
@@ -118,7 +122,33 @@ Browser automation with Playwright, Puppeteer, and CDP.
 
 | Skill | Use When |
 |-------|----------|
-| **browser-automation** | Automating browsers with Playwright/Puppeteer, testing Chrome extensions, handling dynamic content, CDP techniques, AI-powered tools. |
+| **browser-automation** | Automating browsers with Playwright/Puppeteer, handling dynamic content, CDP techniques, AI-powered tools. |
+
+### development-skills
+
+Software development patterns and tooling.
+
+```
+/plugin install development-skills@ronin-marketplace
+```
+
+| Skill | Use When |
+|-------|----------|
+| **chrome-extension-development** | Building Chrome extensions (Manifest V3). Floating panel architecture, sidepanel API, SPA navigation detection, storage patterns, message passing, content scripts, Vitest testing, Playwright E2E. |
+
+### ui-skills
+
+UI design patterns for web and desktop applications.
+
+```
+/plugin install ui-skills@ronin-marketplace
+```
+
+| Skill | Use When |
+|-------|----------|
+| **sidepanel-design-patterns** | Building collapsible sidepanels. Title bar toggle (Claude Code style) vs hover-to-expand with pin (web apps). localStorage persistence, touch device adaptation. |
+| **overlay-design-patterns** | Implementing dropdowns, modals, overlays. Backdrop dismiss pattern, z-index layering, chevron rotation, CSS animations. |
+| **egui-icons** | Adding icons to egui/Rust apps. Phosphor Icons via egui-phosphor, font initialization, icon variants. |
 
 ## Philosophy
 

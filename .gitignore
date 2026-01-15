@@ -10,3 +10,6 @@
 
 # Node (if testing locally)
 node_modules/
+
+# Claude Code local skills
+.claude/

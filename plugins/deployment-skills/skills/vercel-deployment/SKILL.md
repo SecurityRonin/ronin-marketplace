@@ -459,6 +459,97 @@ export async function GET(request: Request) {
 
 ---
 
+## Async Operations & Background Tasks
+
+### Critical: Vercel Kills Background Tasks
+
+<EXTREMELY-IMPORTANT>
+Vercel terminates serverless functions as soon as the response is sent. Any background async tasks (IIFE, `.then()`, `.catch()`) may not complete.
+</EXTREMELY-IMPORTANT>
+
+```typescript
+// ❌ BROKEN - Vercel may kill this before completion
+;(async () => {
+  const email = await lookupEmail(phone)  // Takes 500ms
+  await sendEmail(email, content)          // Never runs!
+})().catch(err => console.error(err))
+
+return NextResponse.json({ success: true }) // Response sent, function dies
+```
+
+```typescript
+// ✅ WORKING - Everything completes before response
+const email = await lookupEmail(phone)
+try {
+  await sendEmail(email, content)
+} catch (err) {
+  console.error('Email failed:', err)
+}
+return NextResponse.json({ success: true })
+```
+
+**Trade-off:** Response is slower (adds ~1-2s) but async operations are guaranteed to complete.
+
+### External API Timeouts
+
+Fetch requests to external APIs can hang indefinitely on Vercel, causing the function to timeout without completing.
+
+```typescript
+// Add AbortController with explicit timeout
+const controller = new AbortController()
+const timeoutId = setTimeout(() => controller.abort(), 8000) // 8s timeout
+
+const response = await fetch(url, {
+  headers: { 'Referer': 'https://example.com/' },
+  signal: controller.signal,
+})
+clearTimeout(timeoutId)
+```
+
+### Recommended Pattern for Notifications
+
+```typescript
+export async function POST(req: NextRequest) {
+  // ... validation and business logic ...
+
+  // Do email lookup in main request flow (not background)
+  const email = phoneNumber ? await lookupEmailByPhone(phoneNumber) : null
+
+  // Send notification synchronously (await ensures completion)
+  if (phoneNumber) {
+    try {
+      if (email) {
+        await sendEmail({ to: email, ...params })
+      } else {
+        await sendSMS({ to: phoneNumber, ...params })
+      }
+    } catch (err) {
+      console.error('[Notification] Failed:', err)
+      // Don't fail the request if notification fails
+    }
+  }
+
+  return NextResponse.json({ success: true })
+}
+```
+
+### Debugging Serverless Functions
+
+1. **Create debug endpoints** to isolate components
+2. **Add logging at each step** of async operations
+3. **Test locally first** - Local dev shows full logs, Vercel logs are delayed/incomplete
+4. **Check Vercel logs:** `vercel logs <url> | grep -E "(Notification|Email|SMS)"`
+
+### Key Takeaways
+
+1. **Never trust background tasks on Vercel** - Always await
+2. **Trim API keys** - Env vars can have hidden newlines
+3. **Add timeouts to external API calls** - Prevent indefinite hangs
+4. **Test locally first** - Full visibility into logs
+5. **Debug endpoints are invaluable** - Isolate components for testing
+
+---
+
 ## Build Caching
 
 ### Turborepo Remote Cache

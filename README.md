@@ -10,7 +10,8 @@ ronin-marketplace
 ├── packaging-skills (2 skills)
 ├── docs-skills (2 skills)
 ├── automation-skills (1 skill)
-├── development-skills (1 skill)
+├── development-skills (2 skills)
+├── data-skills (1 skill)
 └── ui-skills (3 skills)
 ```
 
@@ -30,12 +31,13 @@ Then install the plugins you need:
 /plugin install docs-skills@ronin-marketplace
 /plugin install automation-skills@ronin-marketplace
 /plugin install development-skills@ronin-marketplace
+/plugin install data-skills@ronin-marketplace
 /plugin install ui-skills@ronin-marketplace
 ```
 
 Or install all at once:
 ```
-/plugin install deployment-skills@ronin-marketplace packaging-skills@ronin-marketplace docs-skills@ronin-marketplace automation-skills@ronin-marketplace development-skills@ronin-marketplace ui-skills@ronin-marketplace
+/plugin install deployment-skills@ronin-marketplace packaging-skills@ronin-marketplace docs-skills@ronin-marketplace automation-skills@ronin-marketplace development-skills@ronin-marketplace data-skills@ronin-marketplace ui-skills@ronin-marketplace
 ```
 
 Verify installation:
@@ -82,7 +84,7 @@ Cloud deployment patterns for Vercel, Fly.io, and Cloudflare.
 | Skill | Use When |
 |-------|----------|
 | **deployment** | Choosing a deployment platform. Routes to Vercel, Fly.io, or Cloudflare based on workload type. |
-| **vercel-deployment** | Deploying to Vercel. vercel.json config, env var gotchas (printf!), monorepo setup, Next.js errors, GCP WIF. |
+| **vercel-deployment** | Deploying to Vercel. vercel.json config, env var gotchas (printf!), monorepo setup, Next.js errors, GCP WIF, async operations (Vercel kills background tasks!). |
 | **fly-deployment** | Deploying to Fly.io. Single volume limit, monorepo patterns, Next.js provider errors. |
 | **cloudflare-r2-d1** | Using Cloudflare D1/R2/KV. Critical limits (10GB DB, 1 write/sec/key), multi-tenant patterns. |
 
@@ -126,7 +128,7 @@ Browser automation with Playwright, Puppeteer, and CDP.
 
 ### development-skills
 
-Software development patterns and tooling.
+Software development patterns: Chrome extensions, real-time streaming (SSE).
 
 ```
 /plugin install development-skills@ronin-marketplace
@@ -135,6 +137,19 @@ Software development patterns and tooling.
 | Skill | Use When |
 |-------|----------|
 | **chrome-extension-development** | Building Chrome extensions (Manifest V3). Floating panel architecture, sidepanel API, SPA navigation detection, storage patterns, message passing, content scripts, Vitest testing, Playwright E2E. |
+| **server-sent-events** | Real-time progress updates with SSE. TransformStream patterns, Next.js App Router, client consumption, Vercel timeout limits, error handling, batch processing. |
+
+### data-skills
+
+Analytics and data warehouse patterns for DuckDB, MotherDuck, and Parquet.
+
+```
+/plugin install data-skills@ronin-marketplace
+```
+
+| Skill | Use When |
+|-------|----------|
+| **duckdb-motherduck-parquet** | Using DuckDB/MotherDuck for analytics. Connection string auth (token in URL!), GLIBC compatibility on Vercel/Lambda, Parquet loading, BigInt serialization, CORS headers for WASM. |
 
 ### ui-skills
 

@@ -1,0 +1,11 @@
+{
+  "name": "data-skills",
+  "description": "Analytics and data warehouse patterns: DuckDB, MotherDuck cloud analytics, Parquet file handling, serverless GLIBC compatibility.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Albert Hui",
+    "email": "albert@securityronin.com"
+  },
+  "license": "MIT",
+  "keywords": ["duckdb", "motherduck", "parquet", "analytics", "olap", "data-warehouse"]
+}

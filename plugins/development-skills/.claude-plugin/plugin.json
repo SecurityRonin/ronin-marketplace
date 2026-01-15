@@ -1,0 +1,11 @@
+{
+  "name": "development-skills",
+  "description": "Software development patterns: Chrome extension development (Manifest V3), testing strategies, build tooling. Hard-won lessons from production deployments.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Albert Hui",
+    "email": "albert@securityronin.com"
+  },
+  "license": "MIT",
+  "keywords": ["chrome-extension", "manifest-v3", "development", "testing", "vitest", "playwright", "sse", "server-sent-events", "streaming"]
+}

@@ -7,5 +7,5 @@
     "email": "albert@securityronin.com"
   },
   "license": "MIT",
-  "keywords": ["chrome-extension", "manifest-v3", "development", "testing", "vitest", "playwright", "sse", "server-sent-events", "streaming"]
+  "keywords": ["chrome-extension", "manifest-v3", "development", "testing", "vitest", "playwright"]
 }

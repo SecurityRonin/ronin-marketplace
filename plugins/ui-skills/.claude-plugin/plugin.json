@@ -1,0 +1,11 @@
+{
+  "name": "ui-skills",
+  "description": "UI design patterns and real-time updates: Server-Sent Events, sidepanels, overlays, progress tracking.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Albert Hui",
+    "email": "albert@securityronin.com"
+  },
+  "license": "MIT",
+  "keywords": ["ui", "sse", "server-sent-events", "streaming", "progress", "real-time", "sidepanel", "overlay"]
+}

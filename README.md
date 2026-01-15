@@ -10,9 +10,9 @@ ronin-marketplace
 ├── packaging-skills (2 skills)
 ├── docs-skills (2 skills)
 ├── automation-skills (1 skill)
-├── development-skills (2 skills)
+├── development-skills (1 skill)
 ├── data-skills (1 skill)
-└── ui-skills (3 skills)
+└── ui-skills (1 skill)
 ```
 
 ## Installation
@@ -128,7 +128,7 @@ Browser automation with Playwright, Puppeteer, and CDP.
 
 ### development-skills
 
-Software development patterns: Chrome extensions, real-time streaming (SSE).
+Software development patterns and tooling.
 
 ```
 /plugin install development-skills@ronin-marketplace
@@ -137,7 +137,6 @@ Software development patterns: Chrome extensions, real-time streaming (SSE).
 | Skill | Use When |
 |-------|----------|
 | **chrome-extension-development** | Building Chrome extensions (Manifest V3). Floating panel architecture, sidepanel API, SPA navigation detection, storage patterns, message passing, content scripts, Vitest testing, Playwright E2E. |
-| **server-sent-events** | Real-time progress updates with SSE. TransformStream patterns, Next.js App Router, client consumption, Vercel timeout limits, error handling, batch processing. |
 
 ### data-skills
 
@@ -153,7 +152,7 @@ Analytics and data warehouse patterns for DuckDB, MotherDuck, and Parquet.
 
 ### ui-skills
 
-UI design patterns for web and desktop applications.
+UI patterns for real-time updates and interactive components.
 
 ```
 /plugin install ui-skills@ronin-marketplace
@@ -161,9 +160,7 @@ UI design patterns for web and desktop applications.
 
 | Skill | Use When |
 |-------|----------|
-| **sidepanel-design-patterns** | Building collapsible sidepanels. Title bar toggle (Claude Code style) vs hover-to-expand with pin (web apps). localStorage persistence, touch device adaptation. |
-| **overlay-design-patterns** | Implementing dropdowns, modals, overlays. Backdrop dismiss pattern, z-index layering, chevron rotation, CSS animations. |
-| **egui-icons** | Adding icons to egui/Rust apps. Phosphor Icons via egui-phosphor, font initialization, icon variants. |
+| **server-sent-events** | Real-time progress updates with SSE. TransformStream patterns, Next.js App Router, client consumption, Vercel timeout limits, error handling, batch processing. |
 
 ## Philosophy
 

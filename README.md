@@ -84,7 +84,7 @@ Cloud deployment patterns for Vercel, Fly.io, and Cloudflare.
 | Skill | Use When |
 |-------|----------|
 | **deployment** | Choosing a deployment platform. Routes to Vercel, Fly.io, or Cloudflare based on workload type. |
-| **vercel-deployment** | Deploying to Vercel. vercel.json config, env var gotchas (printf!), monorepo setup, Next.js errors, GCP WIF, async operations (Vercel kills background tasks!). |
+| **vercel-deployment** | Deploying to Vercel. **Fluid Compute** (60s timeout bug, duration limits), vercel.json config, maxDuration patterns, cron jobs, env var gotchas (printf!), monorepo setup, Next.js errors, GCP WIF, async operations (Vercel kills background tasks!). |
 | **fly-deployment** | Deploying to Fly.io. Single volume limit, monorepo patterns, Next.js provider errors. |
 | **cloudflare-r2-d1** | Using Cloudflare D1/R2/KV. Critical limits (10GB DB, 1 write/sec/key), multi-tenant patterns. |
 

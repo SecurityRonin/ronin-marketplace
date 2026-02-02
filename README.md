@@ -10,7 +10,7 @@ ronin-marketplace
 ├── packaging-skills (2 skills)
 ├── docs-skills (2 skills)
 ├── automation-skills (1 skill)
-├── development-skills (1 skill)
+├── development-skills (2 skills)
 ├── data-skills (1 skill)
 └── ui-skills (1 skill)
 ```
@@ -137,6 +137,7 @@ Software development patterns and tooling.
 | Skill | Use When |
 |-------|----------|
 | **chrome-extension-development** | Building Chrome extensions (Manifest V3). Floating panel architecture, sidepanel API, SPA navigation detection, storage patterns, message passing, content scripts, Vitest testing, Playwright E2E. |
+| **2026-migration-patterns** | Upgrading Zod 3→4, Vitest 2→4, Tailwind CSS 3→4, Pinecone 6→7, AI SDK. Breaking API changes (`.errors`→`.issues`, mock constructors, CSS-first config), type errors, migration checklist. |
 
 ### data-skills
 

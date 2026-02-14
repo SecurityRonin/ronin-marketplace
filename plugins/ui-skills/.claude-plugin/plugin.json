@@ -7,5 +7,5 @@
     "email": "albert@securityronin.com"
   },
   "license": "MIT",
-  "keywords": ["ui", "sse", "server-sent-events", "streaming", "progress", "real-time", "sidepanel", "overlay", "chat", "chatbox", "scroll", "column-reverse", "whatsapp"]
+  "keywords": ["ui", "sse", "server-sent-events", "streaming", "progress", "real-time", "sidepanel", "overlay", "chat", "chatbox", "scroll", "column-reverse", "whatsapp", "typing-simulation", "chat-timing", "humanlike", "first-token-delay", "animation"]
 }

@@ -12,7 +12,7 @@ ronin-marketplace
 ├── automation-skills (1 skill)
 ├── development-skills (2 skills)
 ├── data-skills (1 skill)
-└── ui-skills (2 skills)
+└── ui-skills (3 skills)
 ```
 
 ## Installation
@@ -163,6 +163,7 @@ UI patterns for real-time updates and interactive components.
 |-------|----------|
 | **server-sent-events** | Real-time progress updates with SSE. TransformStream patterns, Next.js App Router, client consumption, Vercel timeout limits, error handling, batch processing. |
 | **chatbox-layout-patterns** | Building WhatsApp-style chat UIs. CSSence double-reverse scroll pattern, `min-h-0` grid/flex fix, `h-dvh` viewport locking, scroll sentinel anchoring, typing indicators, mobile bottom sheets. |
+| **humanlike-chat-timing** | Natural AI chat timing. Weber-Fechner delays, beta-distribution first-token delay (2-5s), character-by-character typing with position awareness, punctuation pauses, model response padding. |
 
 ## Philosophy
 

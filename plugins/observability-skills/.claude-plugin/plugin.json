@@ -1,0 +1,11 @@
+{
+  "name": "observability-skills",
+  "description": "Structured logging, observability, and log collection patterns for Next.js applications. Zero-dependency Axiom integration via Vercel Log Drains.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Albert Hui",
+    "email": "albert@securityronin.com"
+  },
+  "license": "MIT",
+  "keywords": ["logging", "structured-logging", "axiom", "observability", "vercel", "log-drains", "monitoring", "tracing", "correlation-id"]
+}

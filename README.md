@@ -12,7 +12,8 @@ ronin-marketplace
 ├── automation-skills (1 skill)
 ├── development-skills (2 skills)
 ├── data-skills (1 skill)
-└── ui-skills (3 skills)
+├── ui-skills (3 skills)
+└── observability-skills (1 skill)
 ```
 
 ## Installation
@@ -33,11 +34,12 @@ Then install the plugins you need:
 /plugin install development-skills@ronin-marketplace
 /plugin install data-skills@ronin-marketplace
 /plugin install ui-skills@ronin-marketplace
+/plugin install observability-skills@ronin-marketplace
 ```
 
 Or install all at once:
 ```
-/plugin install deployment-skills@ronin-marketplace packaging-skills@ronin-marketplace docs-skills@ronin-marketplace automation-skills@ronin-marketplace development-skills@ronin-marketplace data-skills@ronin-marketplace ui-skills@ronin-marketplace
+/plugin install deployment-skills@ronin-marketplace packaging-skills@ronin-marketplace docs-skills@ronin-marketplace automation-skills@ronin-marketplace development-skills@ronin-marketplace data-skills@ronin-marketplace ui-skills@ronin-marketplace observability-skills@ronin-marketplace
 ```
 
 Verify installation:
@@ -164,6 +166,18 @@ UI patterns for real-time updates and interactive components.
 | **server-sent-events** | Real-time progress updates with SSE. TransformStream patterns, Next.js App Router, client consumption, Vercel timeout limits, error handling, batch processing. |
 | **chatbox-layout-patterns** | Building WhatsApp-style chat UIs. CSSence double-reverse scroll pattern, `min-h-0` grid/flex fix, `h-dvh` viewport locking, scroll sentinel anchoring, typing indicators, mobile bottom sheets. |
 | **humanlike-chat-timing** | Natural AI chat timing. Weber-Fechner delays, beta-distribution first-token delay (2-5s), character-by-character typing with position awareness, punctuation pauses, model response padding. |
+
+### observability-skills
+
+Structured logging and Axiom observability for Next.js applications.
+
+```
+/plugin install observability-skills@ronin-marketplace
+```
+
+| Skill | Use When |
+|-------|----------|
+| **structured-logging-axiom** | Implementing structured logging in Next.js. Zero-dependency `createLogger` pattern with JSON output for Axiom, Vercel Log Drains setup, child loggers for request tracing, `LOG_LEVEL` env var override, ESLint `no-console` guard, migration patterns from `console.*`, and pitfalls (`removeConsole`, `next-axiom`). |
 
 ## Philosophy
 

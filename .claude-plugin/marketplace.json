@@ -29,6 +29,12 @@
       "description": "Browser automation with Playwright, Puppeteer, and CDP",
       "version": "1.0.0",
       "source": "./plugins/automation-skills"
+    },
+    {
+      "name": "observability-skills",
+      "description": "Structured logging and Axiom observability for Next.js via Vercel Log Drains",
+      "version": "1.0.0",
+      "source": "./plugins/observability-skills"
     }
   ]
 }
